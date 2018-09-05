@@ -1,0 +1,42 @@
+.background {
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.class-selector{
+  padding-bottom: 5px;
+}
+.archetypes{
+  
+}
+.archetype-table {
+  background: lightgrey;
+  color: black;
+  //padding: 10px;
+  border-width: 5px;
+  border-color: lightgrey;
+  border-style: inset;
+}
+tr,td,th {
+  border-width: 1px;
+  border-style: solid;
+  margin: 5px;
+  padding: 5px;
+}
+.title {
+  position: relative;
+  width: 600px;
+  padding: 10px;
+}
+.filter {
+  color: grey;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  width: 60px;
+  background: white;
+}
