@@ -14,6 +14,7 @@ console.log(data);
 axios.get("archetypedataCache.json").then(function (result) {
   console.log(result);
   data = JSON.parse(result);
+  console.log(data);
 });
 
 console.log(data);
