@@ -97,14 +97,12 @@ var ClassSelector = function (_React$Component2) {
       var flavorarr;
       for(var i = 0; i < data["keys-0"].length; i++) {
         if(e.target.value === data["keys-0"][i]["key-0"]) {
-          console.log("Found archetype "+e.target.value);
           archearr = data["keys-0"][i]["hash-1"]["keys-1"];
-          console.log(archearr);
           archearr.sort(function(a,b) {
-            if (a < b) {
+            if (a["key-1"] < b["key-1"]) {
               return -1;
             }
-            if (a > b) {
+            if (a{"key-1"] > b["key-1"]) {
               return 1;
             }
             return 0;
@@ -115,10 +113,10 @@ var ClassSelector = function (_React$Component2) {
         if(e.target.value === flavor["keys-0"][i]["key-0"]) {
           flavorarr = flavor["keys-0"][i]["hash-1"]["keys-1"];
           flavorarr.sort(function(a,b) {
-            if (a < b) {
+            if (a["key-1"] < b["key-1"]) {
               return -1;
             }
-            if (a > b) {
+            if (a["key-1"] > b["key-1"]) {
               return 1;
             }
             return 0;
@@ -129,10 +127,6 @@ var ClassSelector = function (_React$Component2) {
       console.log(archearr.length === flavorarr.length);
       for(var j = 0; j < archearr.length; j++) {
             iData[j] = {id: j, name: archearr[j]["key-1"], reqs: archearr[j]["set-2"].join(", "), desc: flavorarr[j]["text"]};
-            //iData[j][id] = j;
-            //iData[j][name] = archearr[j]["key-1"];
-            //iData[j][reqs] = archearr[j]["set-2"].join(", ");
-            //iData[j][desc] = flavorarr[j]["text"];
       }
       ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
     }
