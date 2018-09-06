@@ -198,7 +198,7 @@ axios.get("archetypedataCache.json").then(function (result) {
   ReactDOM.render(React.createElement(ClassSelector, null), domContainerSelector);
 });
 
-axios.get("archetypeflavor.json").then(function (result) {
+axios.get("archetypeFlavor.json").then(function (result) {
   console.log(result);
   flavor = result.data;
 });
