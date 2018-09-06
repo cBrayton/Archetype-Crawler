@@ -153,7 +153,7 @@ console.log(domContainerSelector.innerHTML);
 
 axios.get("archetypedataCache.json").then(function (result) {
   console.log(result);
-  data = JSON.parse(result);
+  data = JSON.parse(result.data);
   updateOptions(data);
   console.log(data);
   console.log("In axios call");
