@@ -19,8 +19,8 @@ var iData = [{ id: 1, name: "Sample Archetype", reqs: "Feats", desc: "This is ju
 var options = ['Class 1', 'Class 2', 'Class3'];
 
 function updateOptions(data) {
-  for(i=0; i < data["keys-0"].length; i++) {
-    options[i] = hash["key-0"].i;
+  for(var i=0; i < data["keys-0"].length; i++) {
+    options[i] = data["key-0"].i;
   }
   options.sort();
 }
