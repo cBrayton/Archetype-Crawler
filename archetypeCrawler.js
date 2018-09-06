@@ -134,6 +134,7 @@ var ClassSelector = function (_React$Component2) {
             //iData[j][reqs] = archearr[j]["set-2"].join(", ");
             //iData[j][desc] = flavorarr[j]["text"];
       }
+      ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
     }
   }, {
     key: "render",
