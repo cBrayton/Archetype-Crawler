@@ -128,7 +128,7 @@ var ClassSelector = function (_React$Component2) {
       console.log(archearr.length === flavorarr.length);
       iData = [];
       for(var j = 0; j < archearr.length; j++) {
-            iData[j] = {id: j, name: archearr[j]["key-1"], reqs: archearr[j]["set-2"].join(", "), desc: flavorarr[j]["text"]};
+            iData[j] = {id: j, name: archearr[j]["key-1"], reqs: archearr[j]["set-2"].sort().join(", "), desc: flavorarr[j]["text"]};
       }
       ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
     }
@@ -201,4 +201,9 @@ axios.get("archetypedataCache.json").then(function (result) {
 axios.get("archetypeFlavor.json").then(function (result) {
   console.log(result);
   flavor = result.data;
+});
+
+axios.get("archetypepairCache.json").then(function (result) {
+  console.log(result);
+  pairs = result.data;
 });
