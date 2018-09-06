@@ -92,13 +92,12 @@ var ClassSelector = function (_React$Component2) {
       this.setState({
         value: e.target.value
       });
-      console.log(this.state.value);
+      console.log(e.target.value);
       var archearr;
       var flavorarr;
       for(var i = 0; i < data["keys-0"].length; i++) {
-        console.log(data["keys-0"][i]["key-0"]);
-        if(this.state.value == data["keys-0"][i]["key-0"]) {
-          console.log("Found archetype "+this.state.value);
+        if(e.target.value === data["keys-0"][i]["key-0"]) {
+          console.log("Found archetype "+e.target.value);
           archearr = data["keys-0"][i]["hash-1"]["keys-1"];
           console.log(archearr);
           archearr.sort(function(a,b) {
@@ -113,8 +112,7 @@ var ClassSelector = function (_React$Component2) {
         }
       }
       for(var i = 0; i < flavor["keys-0"].length; i++) {
-        console.log(flavor["keys-0"][i]["key-0"]);
-        if(this.state.value == flavor["keys-0"][i]["key-0"]) {
+        if(e.target.value === flavor["keys-0"][i]["key-0"]) {
           flavorarr = flavor["keys-0"][i]["hash-1"]["keys-1"];
           flavorarr.sort(function(a,b) {
             if (a < b) {
