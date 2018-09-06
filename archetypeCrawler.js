@@ -102,7 +102,7 @@ var ClassSelector = function (_React$Component2) {
             if (a["key-1"] < b["key-1"]) {
               return -1;
             }
-            if (a{"key-1"] > b["key-1"]) {
+            if (a["key-1"] > b["key-1"]) {
               return 1;
             }
             return 0;
