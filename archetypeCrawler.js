@@ -11,6 +11,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var data;
 var flavor;
 var pairs;
+var archearr;
+var flavorarr;
+      
 
 //This data needs to be replaced with the archetypedata cache
 //and the archetypeflavor cache filtered by the selected class
@@ -93,8 +96,6 @@ var ClassSelector = function (_React$Component2) {
         value: e.target.value
       });
       console.log(e.target.value);
-      var archearr;
-      var flavorarr;
       for(var i = 0; i < data["keys-0"].length; i++) {
         if(e.target.value === data["keys-0"][i]["key-0"]) {
           archearr = data["keys-0"][i]["hash-1"]["keys-1"];
