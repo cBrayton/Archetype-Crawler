@@ -14,7 +14,6 @@
 .archetype-table {
   background: lightgrey;
   color: black;
-  //padding: 10px;
   border-width: 5px;
   border-color: lightgrey;
   border-style: inset;
@@ -23,17 +22,11 @@ tr,td,th {
   border-width: 1px;
   border-style: solid;
   padding: 5px;
+  border-color: black;
+  color: black;
 }
 .title {
   position: relative;
   width: 600px;
   padding: 10px;
-}
-.filter {
-  color: grey;
-  position: absolute;
-  top: 30px;
-  right: 10px;
-  width: 60px;
-  background: white;
 }
