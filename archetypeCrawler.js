@@ -20,7 +20,7 @@ var options = ['Class 1', 'Class 2', 'Class3'];
 
 function updateOptions(data) {
   for(var i=0; i < data["keys-0"].length; i++) {
-    options[i] = data["keys-0"].i["key-0"];
+    options[i] = data["keys-0"][i]["key-0"];
   }
   options.sort();
 }
