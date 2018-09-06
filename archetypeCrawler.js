@@ -96,7 +96,7 @@ var ClassSelector = function (_React$Component2) {
       var archearr;
       var flavorarr;
       for(var i = 0; i < data["keys-0"].length; i++) {
-        if(this.state.value === data["keys-0"][i]["key-0"]) {
+        if(this.state.value == data["keys-0"][i]["key-0"]) {
           archearr = data["keys-0"][i]["hash-1"]["keys-1"];
           archearr.sort(function(a,b) {
             if (a < b) {
@@ -110,7 +110,7 @@ var ClassSelector = function (_React$Component2) {
         }
       }
       for(var i = 0; i < flavor["keys-0"].length; i++) {
-        if(this.state.value === flavor["keys-0"][i]["key-0"]) {
+        if(this.state.value == flavor["keys-0"][i]["key-0"]) {
           flavorarr = flavor["keys-0"][i]["hash-1"]["keys-1"];
           flavorarr.sort(function(a,b) {
             if (a < b) {
@@ -126,10 +126,11 @@ var ClassSelector = function (_React$Component2) {
       //archearr and flavorarr should be equal length
       console.log(archearr.length === flavorarr.length);
       for(var j = 0; j < archearr.length; j++) {
-            iData[j][id] = j;
-            iData[j][name] = archearr[j]["key-1"];
-            iData[j][reqs] = archearr[j]["set-2"].join(", ");
-            iData[j][desc] = flavorarr[j]["text"];
+            iData[j] = {id: j, name: archearr[j]["key-1"], reqs: archearr[j]["set-2"].join(", "), desc: flavorarr[j]["text"]};
+            //iData[j][id] = j;
+            //iData[j][name] = archearr[j]["key-1"];
+            //iData[j][reqs] = archearr[j]["set-2"].join(", ");
+            //iData[j][desc] = flavorarr[j]["text"];
       }
     }
   }, {
