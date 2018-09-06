@@ -3,9 +3,6 @@
   color: white;
   position: absolute;
   top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 .class-selector{
   padding-bottom: 5px;
@@ -24,7 +21,6 @@
 tr,td,th {
   border-width: 1px;
   border-style: solid;
-  margin: 5px;
   padding: 5px;
 }
 .title {
