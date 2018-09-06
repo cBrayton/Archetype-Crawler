@@ -16,6 +16,8 @@ axios.get("archetypedataCache.json").then(function (result) {
   data = JSON.parse(result);
   updateOptions(data);
   console.log(data);
+  console.log("In axios call");
+  ReactDOM.render(React.createElement(ClassSelector, null), domContainerSelector);
 });
 
 console.log(data);
