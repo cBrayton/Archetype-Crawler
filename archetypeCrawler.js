@@ -125,6 +125,7 @@ var ClassSelector = function (_React$Component2) {
       }
       //archearr and flavorarr should be equal length
       console.log(archearr.length === flavorarr.length);
+      iData = [];
       for(var j = 0; j < archearr.length; j++) {
             iData[j] = {id: j, name: archearr[j]["key-1"], reqs: archearr[j]["set-2"].join(", "), desc: flavorarr[j]["text"]};
       }
