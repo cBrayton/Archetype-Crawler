@@ -8,9 +8,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var data;
 
 axios.get("archetypedataCache.json").then(function (result) {
   console.log(result);
+  data = JSON.parse(result);
 });
 
 //This data needs to be replaced with the archetypedata cache
@@ -20,6 +22,16 @@ var iData = [{ id: 1, name: "Sample Archetype", reqs: "Feats", desc: "This is ju
 //This data needs to be replaced with the classes from
 //archetypedata cache
 var options = ['Class 1', 'Class 2', 'Class3'];
+
+function updateOptions(data) {
+  var count = 0;
+  for(hash in data["keys-0"]) {
+    options[count] = hash["key-0"];
+    count++;
+  }
+}
+
+updateOptions(data);
 
 var ArchetypeTable = function (_React$Component) {
   _inherits(ArchetypeTable, _React$Component);
