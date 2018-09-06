@@ -97,7 +97,9 @@ var ClassSelector = function (_React$Component2) {
       var flavorarr;
       for(var i = 0; i < data["keys-0"].length; i++) {
         if(this.state.value == data["keys-0"][i]["key-0"]) {
+          console.log("Found archetype "+this.state.value);
           archearr = data["keys-0"][i]["hash-1"]["keys-1"];
+          console.log(archearr);
           archearr.sort(function(a,b) {
             if (a < b) {
               return -1;
