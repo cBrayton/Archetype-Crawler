@@ -14,6 +14,7 @@ console.log(data);
 axios.get("archetypedataCache.json").then(function (result) {
   console.log(result);
   data = JSON.parse(result);
+  updateOptions(data);
   console.log(data);
 });
 
@@ -34,8 +35,6 @@ function updateOptions(data) {
     count++;
   }
 }
-
-updateOptions(data);
 
 var ArchetypeTable = function (_React$Component) {
   _inherits(ArchetypeTable, _React$Component);
