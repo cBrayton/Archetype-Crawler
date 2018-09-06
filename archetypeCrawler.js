@@ -19,11 +19,10 @@ var iData = [{ id: 1, name: "Sample Archetype", reqs: "Feats", desc: "This is ju
 var options = ['Class 1', 'Class 2', 'Class3'];
 
 function updateOptions(data) {
-  var count = 0;
-  for(hash in data["keys-0"]) {
-    options[count] = hash["key-0"];
-    count++;
+  for(i=0; i < data["keys-0"].length; i++) {
+    options[i] = hash["key-0"].i;
   }
+  options.sort();
 }
 
 var ArchetypeTable = function (_React$Component) {
