@@ -202,6 +202,7 @@ function updatePairSet() {
   }
   console.log(pairset);
   console.log(unselectable);
+  ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
 }
 
 function onSelectRow(row, isSelected, e) {
