@@ -13,6 +13,7 @@ var flavor;
 var pairs;
 var archearr;
 var flavorarr;
+var pairarr;
       
 
 //This data needs to be replaced with the archetypedata cache
@@ -124,6 +125,11 @@ var ClassSelector = function (_React$Component2) {
           });
         }
       }
+      for(var i = 0; i < pairs["keys-0"].length; i++) {
+        if(e.target.value === pairs["keys-0"][i]["key-0"]) {
+          pairarr = pairs["keys-0"][i]["hash-1"]["keys-1"];
+        }
+      }
       //archearr and flavorarr should be equal length
       console.log(archearr.length === flavorarr.length);
       iData = [];
@@ -170,8 +176,9 @@ function onSelectRow(row, isSelected, e) {
   }
 }
 
-function onSelectAll(isSelect, row, e) {
-  this.tableBody.setState({ selectedRows: [] });
+function onSelectAll(isSelected, rows) {
+  if(isSelected) {return false;}
+  return true;
 }
 
 console.table(iData);
@@ -179,6 +186,7 @@ console.table(iData);
 var selectRowProp = {
   mode: 'checkbox',
   clickToSelect: true,
+  selected: [],
   onSelect: onSelectRow,
   bgColor: 'gold',
   onSelectAll: onSelectAll
