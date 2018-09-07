@@ -181,20 +181,23 @@ function setIntersect( set1, set2) {
 }
 
 function updatePairSet() {
+  pairset = new Set();
   for(var i = 0; i < pairarr.length; i++) {
     if(archetypeset.has(pairarr[i]["key-1"])) {
       if (pairset.size === 0) {
-        pairset.add(pairarr[i]["set-2"]);
+        pairset = new Set(pairarr[i]["set-2"]);
       }
       else {
-        pairset = setIntersect(pairset,pairarr[i]["set-2"]);
+        pairset = setIntersect(pairset, new Set(pairarr[i]["set-2"]));
       }
     }
   }
   unselectable = [];
-  for(var i = 0; i < iData.length; i++) {
-    if(!archetypeset.has(iData[i]["name"]) && !pairset.has(iData[i]["name"])) {
-      unselectable.push(iData[i]["id"]);
+  if(pairset.size > 0) {
+    for(var i = 0; i < iData.length; i++) {
+      if(!archetypeset.has(iData[i]["name"]) && !pairset.has(iData[i]["name"])) {
+        unselectable.push(iData[i]["id"]);
+      }
     }
   }
   console.log(pairset);
