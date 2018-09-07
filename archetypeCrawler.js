@@ -17,6 +17,7 @@ var pairarr;
 var archetypeset = new Set();
 var pairset = new Set();
 var unselectable = [];
+var selected = new Set();
       
 
 //This data needs to be replaced with the archetypedata cache
@@ -202,7 +203,6 @@ function updatePairSet() {
   }
   console.log(pairset);
   console.log(unselectable);
-  ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
 }
 
 function onSelectRow(row, isSelected, e) {
@@ -211,12 +211,15 @@ function onSelectRow(row, isSelected, e) {
     //of incompatible archetypes
     //Also make those rows unselectable
     archetypeset.add(row["name"]);
+    selected.ad(row["id"]);
   }
   else {
     archetypeset.delete(row["name"]);
+    selected.delete(row["id"]);
   }
   console.log(archetypeset);
   updatePairSet();
+  ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
 }
 
 function onSelectAll(isSelected, rows) {
@@ -230,7 +233,7 @@ console.table(iData);
 var selectRowProp = {
   mode: 'checkbox',
   clickToSelect: true,
-  selected: [],
+  selected: [selected],
   onSelect: onSelectRow,
   bgColor: 'gold',
   onSelectAll: onSelectAll,
