@@ -234,7 +234,7 @@ console.table(iData);
 var selectRowProp = {
   mode: 'checkbox',
   clickToSelect: true,
-  selected: [selected],
+  selected: Array.from(selected),
   onSelect: onSelectRow,
   bgColor: 'gold',
   onSelectAll: onSelectAll,
