@@ -16,6 +16,7 @@ var flavorarr;
 var pairarr;
 var archetypeset = new Set();
 var pairset = new Set();
+var unselectable = [];
       
 
 //This data needs to be replaced with the archetypedata cache
@@ -190,6 +191,12 @@ function updatePairSet() {
       }
     }
   }
+  unselectable = [];
+  for(var i = 0; i < iData.length; i++) {
+    if(!archetypeset.has(iData[i]["name"]) && !pairset.has(iData[i]["name"])) {
+      unselectable.push(iData[i]["id"]);
+    }
+  }
 }
 
 function onSelectRow(row, isSelected, e) {
@@ -208,6 +215,7 @@ function onSelectRow(row, isSelected, e) {
 
 function onSelectAll(isSelected, rows) {
   if(isSelected) {return false;}
+  updatePairSet();
   return true;
 }
 
@@ -220,14 +228,7 @@ var selectRowProp = {
   onSelect: onSelectRow,
   bgColor: 'gold',
   onSelectAll: onSelectAll,
-  unselectable: function(row, isSelect) {
-    if(!isSelect) {
-      if(!pairset.has(row["name"])) {
-        return row["id"];
-      }
-    }
-    return null;
-  }
+  unselectable: unselectable
 };
 
 var domContainerTable = document.querySelector('#archetype_table_js');
