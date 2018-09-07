@@ -14,6 +14,8 @@ var pairs;
 var archearr;
 var flavorarr;
 var pairarr;
+var archetypeset = new Set();
+var pairset = new Set();
       
 
 //This data needs to be replaced with the archetypedata cache
@@ -167,13 +169,41 @@ var ClassSelector = function (_React$Component2) {
   return ClassSelector;
 }(React.Component);
 
+function setIntersect( set1, set2) {
+  var finalset = new Set();
+  set1.forEach(function(value) {
+    if(set2.has(value)) {
+      finalset.add(value);
+    }
+  });
+  return finalset;
+}
+
+function updatePairSet() {
+  for(var i = 0; i < pairarr.length; i++) {
+    if(archetypeset.has(pairarr[i]["key-1"])) {
+      if (pairset.size === 0) {
+        pairset.add(pairarr[i]["set-2"]);
+      }
+      else {
+        pairset = setIntersection(pairset,pairarr[i]["set-2"]);
+      }
+    }
+  }
+}
+
 function onSelectRow(row, isSelected, e) {
   if (isSelected) {
     //Sort table by compatable archetypes and change color
     //of incompatible archetypes
     //Also make those rows unselectable
-
+    archetypeset.add(row["name"]);
   }
+  else {
+    archetypeset.delete(row["name"]);
+  }
+  console.log(archetypeset);
+  updatePairSet();
 }
 
 function onSelectAll(isSelected, rows) {
@@ -189,8 +219,15 @@ var selectRowProp = {
   selected: [],
   onSelect: onSelectRow,
   bgColor: 'gold',
-  onSelectAll: onSelectAll
-  //unselectable: [0]
+  onSelectAll: onSelectAll,
+  unselectable: function(row, isSelect) {
+    if(!isSelect) {
+      if(!pairset.has(row["name"])) {
+        return row["id"];
+      }
+    }
+    return null;
+  }
 };
 
 var domContainerTable = document.querySelector('#archetype_table_js');
