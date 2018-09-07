@@ -194,7 +194,7 @@ function updatePairSet() {
     }
   }
   unselectable = [];
-  if(pairset.size > 0) {
+  if(archetypeset.size > 0) {
     for(var i = 0; i < iData.length; i++) {
       if(!archetypeset.has(iData[i]["name"]) && !pairset.has(iData[i]["name"])) {
         unselectable.push(iData[i]["id"]);
