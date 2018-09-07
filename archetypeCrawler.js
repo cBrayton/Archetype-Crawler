@@ -219,6 +219,7 @@ function onSelectRow(row, isSelected, e) {
   }
   console.log(archetypeset);
   updatePairSet();
+  console.log(selected);
   ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
 }
 
