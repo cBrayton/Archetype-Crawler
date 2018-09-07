@@ -211,7 +211,7 @@ function onSelectRow(row, isSelected, e) {
     //of incompatible archetypes
     //Also make those rows unselectable
     archetypeset.add(row["name"]);
-    selected.ad(row["id"]);
+    selected.add(row["id"]);
   }
   else {
     archetypeset.delete(row["name"]);
