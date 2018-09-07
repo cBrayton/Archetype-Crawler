@@ -187,7 +187,7 @@ function updatePairSet() {
         pairset.add(pairarr[i]["set-2"]);
       }
       else {
-        pairset = setIntersection(pairset,pairarr[i]["set-2"]);
+        pairset = setIntersect(pairset,pairarr[i]["set-2"]);
       }
     }
   }
@@ -197,6 +197,8 @@ function updatePairSet() {
       unselectable.push(iData[i]["id"]);
     }
   }
+  console.log(pairset);
+  console.log(unselectable);
 }
 
 function onSelectRow(row, isSelected, e) {
