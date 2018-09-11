@@ -36,7 +36,7 @@ function updateOptions(data) {
 }
 
 function rowClassNameFormat(data) {
-  console.log("Setting row classes";
+  console.log("Setting row classes");
   console.log(data);
   if(unselectable.includes(data.id)) {
     return 'unselectable-archetypes';
