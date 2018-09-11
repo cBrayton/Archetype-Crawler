@@ -60,7 +60,7 @@ var ArchetypeTable = function (_React$Component) {
         React.createElement(
           BootstrapTable,
           { data: this.props.data,
-            trClassName={this.rowClassNameFormat},
+            trClassName: this.rowClassNameFormat,
             selectRow: selectRowProp },
           React.createElement(
             TableHeaderColumn,
