@@ -18,6 +18,7 @@ var archetypeset = new Set();
 var pairset = new Set();
 var unselectable = [];
 var selected = new Set();
+var hide = false;
       
 
 //This data needs to be replaced with the archetypedata cache
@@ -171,6 +172,11 @@ var ClassSelector = function (_React$Component2) {
   return ClassSelector;
 }(React.Component);
 
+function toggleHide() {
+  if(hide) {hide = false;}
+  else {hide = true;}
+}
+
 function setIntersect( set1, set2) {
   var finalset = new Set();
   set1.forEach(function(value) {
@@ -187,10 +193,12 @@ function updateRowClassName() {
     if(unselectable.includes(i)) {
       rows[i].classList.add('unselectable-archetypes');
       rows[i].classList.remove('selectable-archetypes');
+      if(hide) {rows[i].classList.add('hide');}
     }
     else {
       rows[i].classList.add('selectable-archetypes');
       rows[i].classList.remove('unselectable-archetypes');
+      rows[i].classList.remove('hide');
     }
   }
 }
