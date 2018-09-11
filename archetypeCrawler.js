@@ -182,15 +182,15 @@ function setIntersect( set1, set2) {
 }
 
 function updateRowClassName() {
-  var table = document.getElementsByTagName("tbody"); 
-  for(var i = 0; i < table.rows.length; i++) {
+  var rows = document.getElementsByTagName("tbody tr"); 
+  for(var i = 0; i < rows.length; i++) {
     if(unselectable.includes(data.id)) {
-      table.rows[i].classList.add('unselectable-archetypes');
-      table.rows[i].classList.remove('selectable-archetypes');
+      rows[i].classList.add('unselectable-archetypes');
+      rows[i].classList.remove('selectable-archetypes');
     }
     else {
-      table.rows[i].classList.add('selectable-archetypes');
-      table.rows[i].classList.remove('unselectable-archetypes');
+      rows[i].classList.add('selectable-archetypes');
+      rows[i].classList.remove('unselectable-archetypes');
     }
   }
 }
