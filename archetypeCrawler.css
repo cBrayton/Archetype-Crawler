@@ -30,3 +30,6 @@ tr,td,th {
 .unselectable-archetypes{
   background-color: brown;
 }
+.hide{
+  display: none;
+}
