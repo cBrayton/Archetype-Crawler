@@ -172,7 +172,7 @@ var ClassSelector = function (_React$Component2) {
   return ClassSelector;
 }(React.Component);
 
-document.getElementById("hideToggle").onclick = toggleHide();
+document.getElementById("hideToggle").onclick = function(){console.log("Hide is: "+hide);toggleHide();}
 
 function toggleHide() {
   if(hide) {hide = false;}
