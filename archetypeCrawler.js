@@ -235,6 +235,7 @@ function onSelectRow(row, isSelected, e) {
   }
   console.log(archetypeset);
   updatePairSet();
+  updateRowClassName();
   selectRowProp.selected = Array.from(selected);
   console.log(selected);
   console.log(selectRowProp);
