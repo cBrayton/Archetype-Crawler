@@ -35,9 +35,9 @@ function updateOptions(data) {
   options.sort();
 }
 
-function rowClassNameFormat(row, rowIdx) {
-  console.log(rowIdx+" "+row);
-  if(unselectable.includes(rowIdx)) {
+function rowClassNameFormat(data) {
+  console.log(data.id);
+  if(unselectable.includes(data.id)) {
     return 'unselectable-archetypes';
   }
   return 'selectable-archetypes';
@@ -61,7 +61,7 @@ var ArchetypeTable = function (_React$Component) {
         React.createElement(
           BootstrapTable,
           { data: this.props.data,
-            trClassName: this.rowClassNameFormat(),
+            trClassName: rowClassNameFormat(this.props.data),
             selectRow: selectRowProp },
           React.createElement(
             TableHeaderColumn,
