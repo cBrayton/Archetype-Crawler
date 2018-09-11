@@ -39,7 +39,7 @@ function rowClassNameFormat(row, rowIdx) {
   if(unselectable.includes(rowIdx)) {
     return 'unselectable-archetypes';
   }
-  return '';
+  return 'selectable-archetypes';
 }
 
 var ArchetypeTable = function (_React$Component) {
