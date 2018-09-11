@@ -8,9 +8,6 @@
 .class-selector{
   padding-bottom: 5px;
 }
-.archetypes{
-  
-}
 .archetype-table {
   background: lightgrey;
   color: black;
@@ -29,4 +26,7 @@ tr,td,th {
   position: relative;
   width: 600px;
   padding: 10px;
+}
+.unselectable-archetypes{
+  color: grey;
 }
