@@ -21,14 +21,14 @@ var selected = new Set();
 var hide = false;
       
 
-//This data needs to be replaced with the archetypedata cache
-//and the archetypeflavor cache filtered by the selected class
+//This sample data is replaced with the archetypedata cache json file and the archetypeflavor cache json file
+//The archetypedata json file is created from nested hashtables of Classes>Archetypes>Requirements
 var iData = [{ id: 1, name: "Sample Archetype", reqs: "Feats", desc: "This is just a sample archetype." }, { id: 2, name: "Second Archetype", reqs: "Different Feats", desc: "Here's a different archetype" }];
 
-//This data needs to be replaced with the classes from
-//archetypedata cache
+//This data needs to be replaced with the classes from archetypedata cache json file
 var options = ['Class 1', 'Class 2', 'Class3'];
 
+//This function loads the data pulled from the archetypedata json file, using an axios query, into the options array
 function updateOptions(data) {
   for(var i=0; i < data["keys-0"].length; i++) {
     options[i] = data["keys-0"][i]["key-0"];
@@ -36,6 +36,7 @@ function updateOptions(data) {
   options.sort();
 }
 
+//Creates the table using React-Bootstrap-Table; transpiled using babel
 var ArchetypeTable = function (_React$Component) {
   _inherits(ArchetypeTable, _React$Component);
 
@@ -83,6 +84,7 @@ var ArchetypeTable = function (_React$Component) {
   return ArchetypeTable;
 }(React.Component);
 
+//Creates the drop down menu using React-Select; transpiled using babel
 var ClassSelector = function (_React$Component2) {
   _inherits(ClassSelector, _React$Component2);
 
@@ -101,7 +103,9 @@ var ClassSelector = function (_React$Component2) {
       this.setState({
         value: e.target.value
       });
+      //The code that updates the iData array when a new class is selected from the selector
       console.log(e.target.value);
+      //Loops through all of the classes to find the one that was selected, and stores its data
       for(var i = 0; i < data["keys-0"].length; i++) {
         if(e.target.value === data["keys-0"][i]["key-0"]) {
           archearr = data["keys-0"][i]["hash-1"]["keys-1"];
@@ -116,6 +120,7 @@ var ClassSelector = function (_React$Component2) {
           });
         }
       }
+      //Repeat for the flavor data set
       for(var i = 0; i < flavor["keys-0"].length; i++) {
         if(e.target.value === flavor["keys-0"][i]["key-0"]) {
           flavorarr = flavor["keys-0"][i]["hash-1"]["keys-1"];
@@ -130,6 +135,7 @@ var ClassSelector = function (_React$Component2) {
           });
         }
       }
+      //Also repeat for the precomputed pairs data set
       for(var i = 0; i < pairs["keys-0"].length; i++) {
         if(e.target.value === pairs["keys-0"][i]["key-0"]) {
           pairarr = pairs["keys-0"][i]["hash-1"]["keys-1"];
@@ -172,6 +178,7 @@ var ClassSelector = function (_React$Component2) {
   return ClassSelector;
 }(React.Component);
 
+//Toggles whether incompatible archetypes are hidden or re-colored
 document.getElementById("hideToggle").onclick = function(){console.log("Hide is: "+hide);toggleHide();}
 
 function toggleHide() {
@@ -180,6 +187,7 @@ function toggleHide() {
   updateRowClassName();
 }
 
+//Returns the intersection of two sets
 function setIntersect( set1, set2) {
   var finalset = new Set();
   set1.forEach(function(value) {
@@ -190,6 +198,7 @@ function setIntersect( set1, set2) {
   return finalset;
 }
 
+//Changes the class attribute of each row to update the CSS settings based on whether a row can be selected or not
 function updateRowClassName() {
   var rows = document.querySelectorAll("tbody tr"); 
   for(var i = 0; i < rows.length; i++) {
@@ -211,6 +220,8 @@ function updateRowClassName() {
   }
 }
 
+//Uses precomputed pairs of compatible archetypes to find the intersection
+//(and remaining compatbible archetypes) of all selected archetypes
 function updatePairSet() {
   pairset = new Set();
   for(var i = 0; i < pairarr.length; i++) {
@@ -223,6 +234,7 @@ function updatePairSet() {
       }
     }
   }
+  //Sets the unselectable archetypes, which is any not in pairset and not already selected
   unselectable = [];
   if(archetypeset.size > 0) {
     for(var i = 0; i < iData.length; i++) {
@@ -236,6 +248,8 @@ function updatePairSet() {
   selectRowProp.unselectable = unselectable;
 }
 
+//Updates record of what has been selected or deselected
+//then runs updatePairSet and updateRowClassName to update the table
 function onSelectRow(row, isSelected, e) {
   if (isSelected) {
     //Sort table by compatable archetypes and change color
@@ -257,6 +271,8 @@ function onSelectRow(row, isSelected, e) {
   ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
 }
 
+//Only allows everything to be deselected
+//(Select all would lead to incompatible archetypes being selected together)
 function onSelectAll(isSelected, rows) {
   if(isSelected) {return false;}
   archetypeset = new Set();
@@ -269,21 +285,25 @@ function onSelectAll(isSelected, rows) {
 
 console.table(iData);
 
+//Settings for row selector in React-Bootstrap-Table element
+//This is where the selected row background color can be changed
 var selectRowProp = {
   mode: 'checkbox',
   clickToSelect: true,
   selected: Array.from(selected),
   onSelect: onSelectRow,
-  bgColor: 'gold',
+  bgColor: 'gold', //Change this if you don't like gold colors for selected archetypes
   onSelectAll: onSelectAll,
   unselectable: unselectable
 };
 
+//Render table and selector
 var domContainerTable = document.querySelector('#archetype_table_js');
 ReactDOM.render(React.createElement(ArchetypeTable, { data: iData }), domContainerTable);
 var domContainerSelector = document.querySelector('#class_selector_js');
 ReactDOM.render(React.createElement(ClassSelector, null), domContainerSelector);
 
+//Perform axios calls to pull data from 3 json files
 axios.get("archetypedataCache.json").then(function (result) {
   console.log(result);
   data = result.data;
