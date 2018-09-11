@@ -182,9 +182,9 @@ function setIntersect( set1, set2) {
 }
 
 function updateRowClassName() {
-  var rows = document.getElementsByTagName("tbody tr"); 
+  var rows = document.querySelectorAll("tbody tr"); 
   for(var i = 0; i < rows.length; i++) {
-    if(unselectable.includes(data.id)) {
+    if(unselectable.includes(i)) {
       rows[i].classList.add('unselectable-archetypes');
       rows[i].classList.remove('selectable-archetypes');
     }
