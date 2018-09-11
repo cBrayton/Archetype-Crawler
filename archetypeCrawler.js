@@ -259,6 +259,7 @@ function onSelectRow(row, isSelected, e) {
 
 function onSelectAll(isSelected, rows) {
   if(isSelected) {return false;}
+  archetypeset = new Set();
   updatePairSet();
   return true;
 }
