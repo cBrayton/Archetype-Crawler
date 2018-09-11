@@ -52,8 +52,7 @@ var ArchetypeTable = function (_React$Component) {
         null,
         React.createElement(
           BootstrapTable,
-          { id: "table",
-            data: this.props.data,
+          { data: this.props.data,
             selectRow: selectRowProp },
           React.createElement(
             TableHeaderColumn,
@@ -183,7 +182,7 @@ function setIntersect( set1, set2) {
 }
 
 function updateRowClassName() {
-  var table = document.getElementById("table");
+  var table = document.getElementsByTagName("tbody"); 
   for(var i = 0; i < table.rows.length; i++) {
     if(unselectable.includes(data.id)) {
       table.rows[i].classList.add('unselectable-archetypes');
