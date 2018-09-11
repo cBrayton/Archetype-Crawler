@@ -35,15 +35,6 @@ function updateOptions(data) {
   options.sort();
 }
 
-function rowClassNameFormat(data) {
-  console.log("Setting row classes");
-  console.log(data);
-  if(unselectable.includes(data.id)) {
-    return 'unselectable-archetypes';
-  }
-  return 'selectable-archetypes';
-}
-
 var ArchetypeTable = function (_React$Component) {
   _inherits(ArchetypeTable, _React$Component);
 
@@ -61,8 +52,8 @@ var ArchetypeTable = function (_React$Component) {
         null,
         React.createElement(
           BootstrapTable,
-          { data: this.props.data,
-            trClassName: rowClassNameFormat(this.props.row),
+          { id: "table",
+            data: this.props.data,
             selectRow: selectRowProp },
           React.createElement(
             TableHeaderColumn,
@@ -189,6 +180,20 @@ function setIntersect( set1, set2) {
     }
   });
   return finalset;
+}
+
+function updateRowClassName() {
+  var table = document.getElementById("table");
+  for(var i = 0; i < table.rows.length; i++) {
+    if(unselectable.includes(data.id)) {
+      table.rows[i].classList.add('unselectable-archetypes');
+      table.rows[i].classList.remove('selectable-archetypes');
+    }
+    else {
+      table.rows[i].classList.add('selectable-archetypes');
+      table.rows[i].classList.remove('unselectable-archetypes');
+    }
+  }
 }
 
 function updatePairSet() {
