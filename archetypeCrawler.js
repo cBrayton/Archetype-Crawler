@@ -177,6 +177,7 @@ document.getElementById("hideToggle").onclick = function(){console.log("Hide is:
 function toggleHide() {
   if(hide) {hide = false;}
   else {hide = true;}
+  updateRowClassName();
 }
 
 function setIntersect( set1, set2) {
