@@ -195,7 +195,7 @@ function updateRowClassName() {
     if(unselectable.includes(i)) {
       rows[i].classList.add('unselectable-archetypes');
       rows[i].classList.remove('selectable-archetypes');
-      if(hide) {rows[i].classList.add('hide');}
+      if(hide === true) {rows[i].classList.add('hide');}
     }
     else {
       rows[i].classList.add('selectable-archetypes');
