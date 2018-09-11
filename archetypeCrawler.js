@@ -260,7 +260,10 @@ function onSelectRow(row, isSelected, e) {
 function onSelectAll(isSelected, rows) {
   if(isSelected) {return false;}
   archetypeset = new Set();
+  selected = new Set();
   updatePairSet();
+  updateRowClassName();
+  selectRowProp.selected = Array.from(selected);
   return true;
 }
 
