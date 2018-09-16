@@ -19,6 +19,7 @@ var pairset = new Set();
 var unselectable = [];
 var selected = new Set();
 var hide = false;
+var selectedClass;
       
 
 //This sample data is replaced with the archetypedata cache json file and the archetypeflavor cache json file
@@ -47,6 +48,11 @@ var ArchetypeTable = function (_React$Component) {
   }
 
   _createClass(ArchetypeTable, [{
+    key: "linkFormatter",
+    value: function linkFormatter(cell, row) {
+      return '<a href="https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=' + selectedClass + " " + cell + '">' + cell + '</a>';
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -63,7 +69,7 @@ var ArchetypeTable = function (_React$Component) {
           ),
           React.createElement(
             TableHeaderColumn,
-            { dataField: "name", width: "25%" },
+            { dataField: "name", dataFormat: this.linkFormatter, width: "25%" },
             "Archetype"
           ),
           React.createElement(
@@ -105,6 +111,7 @@ var ClassSelector = function (_React$Component2) {
       });
       //The code that updates the iData array when a new class is selected from the selector
       console.log(e.target.value);
+      selectedClass = e.target.value;
       //Loops through all of the classes to find the one that was selected, and stores its data
       for(var i = 0; i < data["keys-0"].length; i++) {
         if(e.target.value === data["keys-0"][i]["key-0"]) {
