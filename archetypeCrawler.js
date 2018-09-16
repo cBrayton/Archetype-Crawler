@@ -50,7 +50,7 @@ var ArchetypeTable = function (_React$Component) {
   _createClass(ArchetypeTable, [{
     key: "linkFormatter",
     value: function linkFormatter(cell, row) {
-      return '<a href="https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=' + selectedClass + " " + cell + '">' + cell + '</a>';
+      return '<a target="_blank" href="https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=' + selectedClass + " " + cell + '">' + cell + '</a>';
     }
   }, {
     key: "render",
